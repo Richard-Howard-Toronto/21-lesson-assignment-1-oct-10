@@ -8,8 +8,9 @@
     <h1> Pictures ... </1>
 
       <% @pictures.each do |picture| %>
-        <p><%= picture.title %>, <%= picture.artist %></p>
-        <img src="<%= picture.url %>" alt="<%= picture.title %>">
+        <p><%= picture.title %>,
+          <%= picture.artist %></p>
+          <img src="<%= picture.url %>" alt="<%= picture.title %>">
       <% end %>
 
   </body>
