@@ -4,14 +4,36 @@
     <meta charset="utf-8">
     <title>index.html.erb</title>
   </head>
+
   <body>
+
     <h1> Pictures ... </1>
 
       <% @pictures.each do |picture| %>
-        <p><%= picture.title %>,
-          <%= picture.artist %></p>
+        <p>
+          <%= picture.title %>,
+          <%= picture.artist %>
+        </p>
+
           <img src="<%= picture.url %>" alt="<%= picture.title %>">
+
       <% end %>
+
+    </br>
+      <h3>
+        <%= link_to "Add a Picture", '/pictures/new' %>
+      </h3>
+
+    </br>
+      <h3>
+        <%= link_to "Show Pictures", '/pictures/show' %>
+      </h3>
+
+    </br>
+      <h3>
+        <%= link_to "Pictures created in year", '/pictures/created' %>
+      </h3>
+
 
   </body>
 </html>

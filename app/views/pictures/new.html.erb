@@ -1,4 +1,5 @@
 <h1>Add your picture here...</h1>
+
 <%= form_for(@picture) do |f| %>
   <p>
     <%= f.label :artist %><br>
@@ -17,11 +18,7 @@
   </p>
 <% end %>
 
-
-<h1>Pictures (<%= @pictures.length %>)</h1>
-<%= link_to("New Picture", "/pictures/new") %>
-
-<% @pictures.each do |picture| %>
-  <p><%= picture.title %>, <%= picture.artist %></p>
-  <%= link_to(image_tag(picture.url), "/pictures/#{picture.id}") %>
-<% end %>
+</br>
+  <h3>
+    <%= link_to "Back to Pictures", '/pictures' %>
+  </h3>

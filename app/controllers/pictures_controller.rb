@@ -1,12 +1,33 @@
+require "active_support/duration"
+require "active_support/core_ext/time/calculations"
+require "active_support/core_ext/time/acts_like"
+require "active_support/core_ext/date/calculations"
+require "active_support/core_ext/date/acts_like"
+
+
 class PicturesController < ApplicationController
 
-  def index
-    @pictures = Picture.all
-  end
 
-  def show
-    @picture = Picture.find(params[:id])
-  end
+    def pictures_created_in_year
+      @recent_pictures = Picture.pictures_created_in_year(2017)
+    end
+
+
+    def show_new_pics
+        @most_recent_pictures = Picture.most_recent_five
+    end
+
+    def show_popular_pictures
+        @most_popular_pictures = Pictures.most_popular_pictures
+    end
+
+    def index
+      @pictures = Picture.all
+    end
+
+    def show
+      @picture = Picture.find(params[:id])
+    end
 
   def new
     @picture = Picture.new
@@ -19,9 +40,9 @@ class PicturesController < ApplicationController
   def update
     @picture = Picture.find(params[:id])
 
-    @picture.title = params[:picture][:title]
+    @picture.title  = params[:picture][:title]
     @picture.artist = params[:picture][:artist]
-    @picture.url = params[:picture][:url]
+    @picture.url    = params[:picture][:url]
 
     if @picture.save
       redirect_to "/pictures/#{@picture.id}"
@@ -51,5 +72,4 @@ class PicturesController < ApplicationController
       render :new
     end
   end
-
 end
